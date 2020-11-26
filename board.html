@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style-board.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Goldman:wght@700&display=swap" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div id="board">
+            <div class="leaderboard">
+                <div class="win-text">Wygrane wojny</div>
+                <div class="leaderboard-element">
+                    <div class="score-contianer">
+                        <div class="score" id="player-score">1</div>
+                        <div class="name" id="name">Gracz</div>
+                    </div>
+                    <a>:</a>
+                    <div class="score-contianer">
+                        <div class="score" id="cpu-score">1</div>
+                        <div class="name" id="player_name">CPU</div>
+                    </div>
+                </div>
+            </div>
+            <div class="cards-container">
+                <div class="card-el">
+                    <div class="cards"></div>
+                    <div class="cards"></div>
+                    <div class="vs">
+                    <a>VS</a>
+                    </div>
+                    <div class="cards"></div>
+                    <div class="cards"></div>
+                </div>
+            </div>
+        </div>
+        <script src="board-js.js"></script>
+    </body>
+</html>
