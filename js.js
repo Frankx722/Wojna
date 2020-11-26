@@ -1,16 +1,18 @@
 var on = document.getElementById("start_button");
-var input;
 
-on.onclick = function przekierowanie()
+on.onclick = przekierowanie;
+
+
+function przekierowanie()
 {
-    var input = document.getElementById("name").value;
-    if(input == "")
+    var inputV = document.getElementById("name").value;
+    if(inputV == "")
     {
         alert("Musisz podać imię");
     }
     else
     {
-        sessionStorage.setItem("name", input)
+        sessionStorage.setItem("name", inputV)
        location.href = "board.html";
        
 
