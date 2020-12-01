@@ -76,10 +76,10 @@ body
 }
 .cards
 {
+    background-color:#00cc66;
     flex-wrap: wrap;
     margin-right: 30px;
     margin-left: 30px;
-    background-color: white;
     display: inline-block;
     width:13% ;
     height:300px;

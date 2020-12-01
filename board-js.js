@@ -5,7 +5,7 @@ var decks_id = "";
 
 var played_cards_code = {};
 var played_cards_value = {};
-var played_cards_img = {} ;
+var played_cards_img = {};
 
 var si_cards_code = {};
 var si_cards_value = {};
@@ -32,8 +32,8 @@ function drawFromDeck()
     .then(response => response.json())
     .then(data => 
         {
-            
-            addToPile()
+            console.log(data);
+            addToPile();
         })
 
     
@@ -94,7 +94,56 @@ function drawFromPile()
                 console.log(si_cards_value);
                 si_cards_img = data.cards[0].image;
                 console.log(si_cards_img);
+                convert();
+
             })
+
+        function convert()
+            {
+
+                //convert values to player cards
+                if(played_cards_value === 'ACE')
+                {
+                    played_cards_value = '1';
+                }
+
+                if(played_cards_value === 'JACK')
+                {
+                    si_cards_value = '11';
+                }
+                if(played_cards_value === 'QUEEN')
+                {
+                    played_cards_value = '12';
+                }
+
+                if(played_cards_value === 'KING')
+                {
+                    played_cards_value = '13';
+                }
+
+                //convert values to si cards
+                if(si_cards_value === 'ACE')
+                {
+                    si_cards_value = '1';
+                }
+
+                if(si_cards_value === 'JACK')
+                {
+                    si_cards_value = '11';
+                }
+
+                if(si_cards_value === 'QUEEN')
+                {
+                    si_cards_value = '12';
+                }
+
+                if(si_cards_value === 'KING')
+                {
+                    si_cards_value = '13';
+                }
+                
+
+            }
 
 }
 
@@ -102,6 +151,9 @@ function show_cards()
 {
    document.getElementById("player_card").src = played_cards_img;
    document.getElementById("si_card").src = si_cards_img;
+
+
+setTimeout(drawFromPile, 500);
 
 
 }
