@@ -2,15 +2,18 @@
 var name = sessionStorage.getItem("name");
 document.getElementById("name").innerHTML = name;
 var decks_id = "";
+var player_points = 0;
+var si_points = 0;
+var played_cards_code = "";
+var played_cards_value = "";
+var played_cards_img = "";
 
-var played_cards_code = {};
-var played_cards_value = {};
-var played_cards_img = {};
+var si_cards_code = "";
+var si_cards_value = "";
+var si_cards_img = "";
 
-var si_cards_code = {};
-var si_cards_value = {};
-var si_cards_img = {} ;
-
+document.getElementById("player-score").innerHTML = player_points;
+document.getElementById("si-score").innerHTML = si_points;
 document.getElementById("submit").onclick = show_cards;
 
 
@@ -77,11 +80,8 @@ function drawFromPile()
     .then(data =>
         {
              played_cards_code = data.cards[0].code;
-            console.log(played_cards_code);
             played_cards_value = data.cards[0].value;
-            console.log(played_cards_value);
             played_cards_img = data.cards[0].image;
-            console.log(played_cards_img);
         })
 
         fetch('https://deckofcardsapi.com/api/deck/' + decks_id + '/pile/player2/draw/')
@@ -89,11 +89,8 @@ function drawFromPile()
         .then(data =>
             {
                  si_cards_code = data.cards[0].code;
-                console.log(si_cards_code);
                 si_cards_value = data.cards[0].value;
-                console.log(si_cards_value);
                 si_cards_img = data.cards[0].image;
-                console.log(si_cards_img);
                 convert();
 
             })
@@ -102,21 +99,21 @@ function drawFromPile()
             {
 
                 //convert values to player cards
-                if(played_cards_value === 'ACE')
+                if(played_cards_value == 'ACE')
                 {
                     played_cards_value = '1';
                 }
 
-                if(played_cards_value === 'JACK')
+                if(played_cards_value == 'JACK')
                 {
-                    si_cards_value = '11';
+                    played_cards_value = '11';
                 }
-                if(played_cards_value === 'QUEEN')
+                if(played_cards_value == 'QUEEN')
                 {
                     played_cards_value = '12';
                 }
 
-                if(played_cards_value === 'KING')
+                if(played_cards_value == 'KING')
                 {
                     played_cards_value = '13';
                 }
@@ -151,9 +148,28 @@ function show_cards()
 {
    document.getElementById("player_card").src = played_cards_img;
    document.getElementById("si_card").src = si_cards_img;
+    console.log(played_cards_value + ' player');
+    console.log(si_cards_value + ' si');
+
+    if(played_cards_value > si_cards_value)
+    {   
+        
+        player_points++;
+
+    }else if(played_cards_value < si_cards_value){
+        si_points++;
+
+    }else if(played_cards_value == si_cards_value){
+        war();
+    }
+
+    document.getElementById("player-score").innerHTML = player_points;
+    document.getElementById("si-score").innerHTML = si_points;
+drawFromPile();
 
 
-setTimeout(drawFromPile, 500);
-
-
+}
+function war()
+{
+    //
 }
