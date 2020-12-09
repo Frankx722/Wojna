@@ -118,11 +118,12 @@ body
 
 .cards-win
 {
+    
     height: 345px;
     background-color:#00cc66;
     flex-wrap: wrap;
-    margin-right: 30px;
-    margin-left: 30px;
+    margin-right: 100px;
+    margin-left: 100px;
     display: inline-block;
     width:13% ;
     min-height:300px;
@@ -134,4 +135,15 @@ body
     height: 36px;
     
     color:darkgreen;
+}
+
+.rotated
+{
+    display: none;
+    position: absolute;
+    -moz-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
 }
