@@ -185,6 +185,9 @@ async function show_cards()
     
      function add_point()
         {
+        played_cards_value = parseInt(played_cards_value );
+        si_cards_value = parseInt(si_cards_value );
+
         document.getElementById("player_card").src = played_cards_img;
         document.getElementById("si_card").src = si_cards_img;
         console.log(played_cards_value + ' player');
@@ -204,18 +207,24 @@ async function show_cards()
             document.getElementById("player-win").innerHTML = "";
             si_points++;
             document.getElementById("si-score").innerHTML = si_points;
-        }else if(played_cards_value == si_cards_value){
+        }else if(played_cards_value === si_cards_value){
             war();
         }
         }
 
-        await add_point()
+        await add_point();
+        try{
         await drawFromPile();
+        }catch(error){
+            console.log("error")
+            endgame()
+        }
 }
 
 
 function war()
 {
+    document.getElementsByClassName("rotated").style.display = "initial";
     document.getElementById("si-win").innerHTML = "";
     document.getElementById("player-win").innerHTML = "";
     
