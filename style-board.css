@@ -139,7 +139,7 @@ body
 
 .rotated
 {
-    display: none;
+    visibility: hidden;
     position: absolute;
     -moz-transform: rotate(90deg);
     -webkit-transform: rotate(90deg);

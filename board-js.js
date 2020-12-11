@@ -20,8 +20,6 @@ document.getElementById("submit").onclick = show_cards;
 
 
 
-
-
 //new deck //
 fetch('https://deckofcardsapi.com/api/deck/new/')
   .then(response => response.json())
@@ -106,7 +104,6 @@ async function addToPile()
 
 async function drawFromPile()
 {
-    console.log("1");
     await fetch('https://deckofcardsapi.com/api/deck/' + decks_id + '/pile/player1/draw/')
     .then(response => response.json())
     .then(data =>
@@ -115,6 +112,12 @@ async function drawFromPile()
              played_cards_code = data.cards[0].code;
             played_cards_value = data.cards[0].value;
             played_cards_img = data.cards[0].image;
+            draw_success1 = data.success;
+
+            if(draw_success1 == false)
+            {
+                endgame();
+            }
         }).then(convert)
 
         await fetch('https://deckofcardsapi.com/api/deck/' + decks_id + '/pile/player2/draw/')
@@ -125,6 +128,12 @@ async function drawFromPile()
                  si_cards_code = data.cards[0].code;
                 si_cards_value = data.cards[0].value;
                 si_cards_img = data.cards[0].image;
+                draw_success2 = data.success;
+                console.log(draw_success1);
+                if(draw_success2 == false)
+                {
+                    endgame();
+                }
                 
 
             }).then(convert)
@@ -180,11 +189,9 @@ async function drawFromPile()
 
     }
  
-async function show_cards()
+ function show_cards()
 {
     
-     function add_point()
-        {
         played_cards_value = parseInt(played_cards_value );
         si_cards_value = parseInt(si_cards_value );
 
@@ -201,32 +208,51 @@ async function show_cards()
             document.getElementById("si-win").innerHTML = "";
             player_points++;
             document.getElementById("player-score").innerHTML = player_points;
-    
+            
+            drawFromPile();
+               
         }else if(played_cards_value < si_cards_value){
             document.getElementById("si-win").innerHTML = "Wygrana!";
             document.getElementById("player-win").innerHTML = "";
             si_points++;
             document.getElementById("si-score").innerHTML = si_points;
+            
+                drawFromPile();
+                
         }else if(played_cards_value === si_cards_value){
+            document.getElementById("si-win").innerHTML = "";
+            document.getElementById("player-win").innerHTML = "";
+            drawFromPile();
             war();
         }
-        }
+       
 
-        await add_point();
-        try{
-        await drawFromPile();
-        }catch(error){
-            console.log("error")
-            endgame()
-        }
+         
+       
 }
 
 
 function war()
 {
-    document.getElementsByClassName("rotated").style.display = "initial";
-    document.getElementById("si-win").innerHTML = "";
-    document.getElementById("player-win").innerHTML = "";
     
-    console.log("war!");
+    document.getElementById("rotated-pl").style.visibility = "visible";
+    document.getElementById("rotated-si").style.visibility = "visible";
+    var player_card = document.getElementById("")
+    
+    
+}
+
+function endgame()
+{
+    var body = document.body;
+    var board = document.getElementById("board");
+    var end_game_div = document.createElement("div");
+    var end_game_div_element = document.createElement("div");
+    body.style.backgroundColor = "#FFE4C4";
+    end_game_div.className = "end_game";
+    end_game_div_element.className = "end_game_element";
+
+    body.appendChild(end_game_div);
+    end_game_div.appendChild(end_game_div_element);
+    board.style.display = "none";
 }
