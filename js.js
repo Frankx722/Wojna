@@ -1,6 +1,6 @@
 var on = document.getElementById("start_button");
 
-on.onclick = przekierowanie;
+on.addEventListener('click', przekierowanie)
 
 
 function przekierowanie()

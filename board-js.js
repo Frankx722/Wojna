@@ -2,7 +2,7 @@
 var name = sessionStorage.getItem("name");
 document.getElementById("name").innerHTML = name;
 var decks_id = "";
-var player_points = 1;
+var player_points = 0;
 var si_points = 0;
 var played_cards_code = "";
 var played_cards_value = "";
@@ -18,7 +18,7 @@ document.getElementById("player-score").innerHTML = player_points;
 document.getElementById("si-score").innerHTML = si_points;
 document.getElementById("submit").onclick = show_cards;
 
-endgame();
+
 
 
 //new deck //
@@ -237,10 +237,22 @@ async function drawFromPile()
 
 function war()
 {
-    
+    var cards_win1 = document.getElementById("cards-win1");
+    var cards_win2 = document.getElementById("cards-win2");
+
+    var rotated1 = document.createElement("img");
+    var rotated2 = document.createElement("img");
+
+    rotated1.className = "rotated";
+    rotated2.className = "rotated";
+
+    cards_win1.appendChild("rotated1");
+    cards_win2.appendChild("rotated2");
+
+
     document.getElementById("rotated-pl").style.visibility = "visible";
     document.getElementById("rotated-si").style.visibility = "visible";
-    var player_card = document.getElementById("")
+    
     
     
 }
@@ -316,7 +328,13 @@ function endgame()
     var button_text = document.createTextNode("Zagraj jeszcze raz");
     button.appendChild(button_text);
 
- //   button.onclick = window.location.reload();
+    button.setAttribute("id", "restartButton")
+
+    document.getElementById("restartButton").addEventListener('click', reloads);
+
+  //button.onclick = window.location.reload();
+
+
 //name change button
 
     var nameChangeButton = document.createElement("div");
@@ -327,7 +345,15 @@ function endgame()
     var nameChange_text = document.createTextNode("Zmień nick");
     nameChangeButton.appendChild(nameChange_text);
 
+    nameChangeButton.setAttribute("id", "nameChButton")
+    document.getElementById("nameChButton").addEventListener('click', changeLocation);
+
    // nameChangeButton.onclick = changeLocation();
+}
+
+function reloads()
+{
+    location.href = "board.html";
 }
 
 function changeLocation()
