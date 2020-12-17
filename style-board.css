@@ -1,5 +1,6 @@
 body
 {
+    margin: 0px;
     font-family: 'Goldman', cursive;
     font-size:30px;
     background-color:#00cc66;
@@ -146,4 +147,102 @@ body
     -o-transform: rotate(90deg);
     -ms-transform: rotate(90deg);
     transform: rotate(90deg);
+}
+
+.end_game
+{
+    background-image: url("images/wood.jpg");
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    border: solid;
+    color: black;
+    min-height: 1000px;
+}
+
+.end_game_element
+{
+    
+}
+.end_game_text_container
+{
+    font-size: 70px;
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    width:100%;
+    background-color: white;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+.podsumowanie
+{
+    font-size: 50px;
+    text-align: center;
+}
+
+.text_container
+{
+    color: white;
+    text-decoration: underline;
+    font-size: 60px;
+    margin-left: 10%;
+    text-align: center;
+    display: inline-block;
+    width: 40%;
+}
+
+.textS_container
+{
+    font-size: 60px;
+    color:limegreen;
+    font-weight: bold;
+    margin-left: 10%;
+    text-align: center;
+    display: inline-block;
+    width: 40%;
+}
+
+.werdykt
+{
+    margin-top: 50px;
+    text-align: center;
+    color: black;
+    font-size: 80px;
+}
+
+.restart
+{
+    text-align: center;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    margin-top: 75px;
+    width: 20%;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+    background-color: white;
+    color:black;
+}
+.restart:hover
+{
+    background-color: black;
+    color:white
+}
+
+.nameChange
+{
+    text-align: center;
+    margin-top: 25px;
+    width: 12%;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+    background-color: white;
+    color:black;
+}
+
+.nameChange:hover{
+    background-color: black;
+    color:white
 }
